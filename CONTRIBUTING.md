@@ -108,6 +108,11 @@ Not ready to write? That's fine—share ideas:
 
 ---
 
+## Using Codex (Optional)
+If you use OpenAI Codex while drafting or validating skills, open this repo in your Codex workspace and reference the skill file path directly (e.g., `skills/user-story/SKILL.md`). For a quick walkthrough, see [Using PM Skills with Codex](docs/Using%20PM%20Skills%20with%20Codex.md).
+
+---
+
 ## 🧩 Skill Types: Which One to Create?
 
 Before adding a new skill, determine which type it should be:
@@ -335,7 +340,7 @@ Your skill should pass these checks:
 
 ## 📜 License Note
 
-By contributing, you agree that your contributions will be licensed under the MIT License (same as this repository).
+By contributing, you agree that your contributions will be licensed under the CC BY-NC-SA 4.0 license (same as this repository).
 
 ---
 

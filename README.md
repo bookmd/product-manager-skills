@@ -13,7 +13,7 @@
 ║   33 battle-tested frameworks for AI agents                      ║
 ║   Claude Code • Cowork • Codex • ChatGPT • Gemini               ║
 ║                                                                   ║
-║   v0.1 • Feb 2026 • MIT License                                  ║
+║   v0.1 • Feb 2026 • CC BY-NC-SA 4.0                                  ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
 
@@ -319,7 +319,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## 📜 License
 
-MIT License — use it, remix it, make it better.
+CC BY-NC-SA 4.0 — non-commercial use with share-alike.
 
 See [LICENSE](LICENSE) for full details.
 
