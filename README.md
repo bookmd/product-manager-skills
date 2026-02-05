@@ -1,6 +1,6 @@
 # Product Manager Skills
 
-```
+```text
 ╔═══════════════════════════════════════════════════════════════════╗
 ║                                                                   ║
 ║   ██████╗ ███╗   ███╗    ███████╗██╗  ██╗██╗██╗     ██╗     ███████╗
@@ -44,7 +44,7 @@ Instead of saying *"Write a PRD"* and hoping for the best, the agent already kno
 
 These 29 skills are organized into **three types** that build on each other:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │  WORKFLOW SKILLS (4)                                   │
 │  Complete end-to-end PM processes                      │
@@ -342,6 +342,6 @@ See [LICENSE](LICENSE) for full details.
 
 **v0.1 — February 2026**
 
-Built by Dean Peters (Principal Consultant and Trainer with Productside) with Claude (Anthropic) and OpenAI Codex.
+Built by Dean Peters (Principal Consultant and Trainer with Productside) with Anthropic Claude and OpenAI Codex.
 
 *Helping product managers work smarter with AI.*
