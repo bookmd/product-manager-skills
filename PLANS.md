@@ -8,7 +8,13 @@
 
 ## 🎉 v0.1 Release Complete
 
-All 30 skills complete and restructured to comply with Anthropic's official skills format.
+All 31 skills complete and restructured to comply with Anthropic's official skills format.
+
+**Latest Additions (Feb 5, 2026):**
+- `pol-probe` (Component) — Template for defining Proof of Life validation experiments
+- `pol-probe-advisor` (Interactive) — Decision framework for choosing which of 5 prototype types to use
+
+Based on Dean Peters' Substack article: [*Vibe First, Validate Fast, Verify Fit*](https://deanpeters.substack.com/p/vibe-first-validate-fast-verify-fit)
 
 **Major Structural Change (Feb 5, 2026):**
 - Restructured from TYPE-based directories to flat skill-name directories

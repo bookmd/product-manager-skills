@@ -10,7 +10,7 @@
 ║   ██║     ██║ ╚═╝ ██║    ███████║██║  ██╗██║███████╗███████╗███████║
 ║   ╚═╝     ╚═╝     ╚═╝    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝
 ║                                                                   ║
-║   29 battle-tested frameworks for AI agents                      ║
+║   31 battle-tested frameworks for AI agents                      ║
 ║   Claude Code • Cowork • Codex • ChatGPT • Gemini               ║
 ║                                                                   ║
 ║   v0.1 • Feb 2026 • MIT License                                  ║
@@ -25,7 +25,7 @@ Write PRDs. Run discovery. Plan roadmaps. Prioritize backlogs. Break down epics.
 
 ## 🎯 What This Is
 
-**29 ready-to-use PM frameworks** that teach AI agents how to do product management work professionally—without you having to explain your process every time.
+**31 ready-to-use PM frameworks** that teach AI agents how to do product management work professionally—without you having to explain your process every time.
 
 Instead of saying *"Write a PRD"* and hoping for the best, the agent already knows:
 - ✅ How to structure a PRD
@@ -101,11 +101,11 @@ These 29 skills are organized into **three types** that build on each other:
 
 ---
 
-## 📦 All 29 Skills (Clickable)
+## 📦 All 31 Skills (Clickable)
 
 Now that you understand the three types, here's the complete catalog:
 
-### 🧱 Component Skills (15)
+### 🧱 Component Skills (16)
 
 | Skill | Use When You Need To... |
 |-------|-------------------------|
@@ -124,10 +124,11 @@ Now that you understand the three types, here's the complete catalog:
 | **[customer-journey-map](skills/customer-journey-map/SKILL.md)** | Map customer experience across all touchpoints (NNGroup framework) |
 | **[pestel-analysis](skills/pestel-analysis/SKILL.md)** | Analyze external factors (Political, Economic, Social, Tech, Environmental, Legal) |
 | **[company-research](skills/company-research/SKILL.md)** | Deep-dive competitor or company analysis |
+| **[pol-probe](skills/pol-probe/SKILL.md)** | Define lightweight, disposable validation experiments to test hypotheses before building (Dean Peters PoL framework) |
 
 ---
 
-### 🔄 Interactive Skills (10)
+### 🔄 Interactive Skills (11)
 
 | Skill | What It Does |
 |-------|--------------|
@@ -137,6 +138,7 @@ Now that you understand the three types, here's the complete catalog:
 | **[tam-sam-som-calculator](skills/tam-sam-som-calculator/SKILL.md)** | Projects market size (TAM/SAM/SOM) with real-world data and citations |
 | **[epic-breakdown-advisor](skills/epic-breakdown-advisor/SKILL.md)** | Splits epics into user stories using Richard Lawrence's 9 patterns |
 | **[opportunity-solution-tree](skills/opportunity-solution-tree/SKILL.md)** | Generates opportunities and solutions, recommends best proof-of-concept to test |
+| **[pol-probe-advisor](skills/pol-probe-advisor/SKILL.md)** | Recommends which of 5 prototype types to use based on your hypothesis and risk (Feasibility, Task-Focused, Narrative, Synthetic Data, Vibe-Coded) |
 | **[user-story-mapping-workshop](skills/user-story-mapping-workshop/SKILL.md)** | Walks you through creating story maps with backbone and release slices |
 | **[customer-journey-mapping-workshop](skills/customer-journey-mapping-workshop/SKILL.md)** | Guides journey mapping with pain point identification |
 | **[problem-framing-canvas](skills/problem-framing-canvas/SKILL.md)** | Leads you through MITRE Problem Framing (Look Inward/Outward/Reframe) |
@@ -192,6 +194,10 @@ claude "Using the PRD Development workflow, create a PRD for our mobile feature"
 
 ### "I need to validate a customer problem before building"
 → **Workflow:** [`discovery-process`](skills/discovery-process/SKILL.md) (3-4 weeks, interviews → synthesis → validation)
+
+### "I need to test a hypothesis quickly before investing in development"
+→ **Interactive:** [`pol-probe-advisor`](skills/pol-probe-advisor/SKILL.md) (recommends which prototype type: Feasibility, Task-Focused, Narrative, Synthetic Data, or Vibe-Coded)
+→ **Component:** [`pol-probe`](skills/pol-probe/SKILL.md) (template for documenting validation experiments)
 
 ### "I need to write a PRD for a new feature"
 → **Workflow:** [`prd-development`](skills/prd-development/SKILL.md) (2-4 days, problem → solution → stories)
