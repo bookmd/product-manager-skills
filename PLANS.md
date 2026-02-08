@@ -1,14 +1,21 @@
 # Product Manager Skills — Development Roadmap
 
-**Last Updated:** 2026-02-05
-**Status:** Phase 1 COMPLETE ✅ | Phase 2 COMPLETE ✅ | Phase 3 COMPLETE ✅ | Phase 4 COMPLETE ✅ | Phase 5 COMPLETE ✅
-**Version:** v0.1 (Released Feb 2026)
+**Last Updated:** 2026-02-08
+**Status:** Phase 1 COMPLETE ✅ | Phase 2 COMPLETE ✅ | Phase 3 COMPLETE ✅ | Phase 4 COMPLETE ✅ | Phase 5 COMPLETE ✅ | Phase 6 COMPLETE ✅ | Phase 7 COMPLETE ✅ | Phase 8 IN PROGRESS 🚧
+**Version:** v0.2 (Released February 8, 2026)
 
 ---
 
-## 🎉 v0.1 Release Complete
+## 🎉 v0.2 Release Complete
 
-All 33 skills complete and restructured to comply with Anthropic's official skills format.
+All 41 skills complete and restructured to comply with Anthropic's official skills format.
+
+**v0.2 additions:**
+- Phase 7 Finance suite (7 new skills)
+- Automation tooling expansion: `add-a-skill`, `build-a-skill`, `find-a-skill`, `test-a-skill`
+- Stricter metadata and structure conformance enforcement
+
+> Note: Detailed phase tables below are preserved from earlier planning snapshots and may reference historical file naming conventions.
 
 **Latest Additions (Feb 5, 2026):**
 - `pol-probe` (Component) — Template for defining Proof of Life validation experiments

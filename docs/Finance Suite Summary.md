@@ -3,7 +3,7 @@
 **7 Skills for SaaS Finance & Unit Economics**
 
 **Release Date:** February 8, 2026
-**Version:** 1.0
+**Suite Version:** 1.0 (repo v0.2)
 **Total Skills:** 7 (3 Component + 4 Interactive)
 **Total Lines:** 4,290
 **Coverage:** 32 SaaS finance metrics
@@ -614,7 +614,7 @@ All skills pass metadata checks. ✅
 
 ## Release Notes
 
-**Version:** 1.0
+**Suite Version:** 1.0 (repo v0.2)
 **Release Date:** February 8, 2026
 **License:** CC BY-NC-SA 4.0
 

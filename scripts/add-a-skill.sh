@@ -3,13 +3,13 @@
 # add-a-skill.sh — Agent-agnostic skill distillation utility
 #
 # Purpose: Convert raw PM content into formalized skills using AI agents
-#          Supports Claude Code, Codex, Goose, Gemini, and custom agents
+#          Supports Claude Code, manual mode, and custom adapters
 #
 # Usage:
 #   ./scripts/add-a-skill.sh <input-file>
 #   ./scripts/add-a-skill.sh --text "content here"
 #   cat file.md | ./scripts/add-a-skill.sh
-#   ./scripts/add-a-skill.sh --agent codex <input-file>
+#   ./scripts/add-a-skill.sh --agent manual <input-file>
 #   ./scripts/add-a-skill.sh --list-agents
 #
 # Workflow:
@@ -95,11 +95,11 @@ confirm() {
     [[ "$response" =~ ^[Yy] ]]
 }
 
-# List available agents
+# List available adapters
 list_agents() {
-    print_header "Available AI Agents"
+    print_header "Available Adapters"
 
-    echo "Installed agents:"
+    echo "Detected adapters:"
     local found_any=false
 
     for adapter in "$ADAPTERS_DIR"/*.sh; do
@@ -121,24 +121,21 @@ list_agents() {
     done
 
     if ! $found_any; then
-        print_error "No AI agents are currently available"
-        echo -e "\nTo use this script, install one of the supported agents:"
-        echo "  • Claude Code: https://claude.ai/download"
-        echo "  • OpenAI Codex: https://github.com/openai/codex-cli"
-        echo "  • Goose: https://github.com/square/goose"
-        echo "  • Gemini Antigravity: https://github.com/google/antigravity"
+        print_error "No adapters are currently available"
+        echo -e "\nCreate an adapter in: $ADAPTERS_DIR"
+        echo "Or use manual mode: $0 --agent manual <input-file>"
         exit 1
     fi
 
-    echo -e "\nUsage: $0 --agent <agent-name> <input-file>"
+    echo -e "\nUsage: $0 --agent <adapter-name> <input-file>"
 }
 
-# Detect available agent
+# Detect available adapter
 detect_agent() {
-    print_step "Detecting available AI agents..."
+    print_step "Detecting available adapters..."
 
     # Try agents in priority order
-    local priority_order=("claude-code" "codex" "goose" "gemini")
+    local priority_order=("claude-code" "manual")
 
     for agent_name in "${priority_order[@]}"; do
         local adapter="$ADAPTERS_DIR/$agent_name.sh"
@@ -155,7 +152,7 @@ detect_agent() {
         fi
     done
 
-    print_error "No AI agents found. Install Claude Code, Codex, Goose, or Gemini."
+    print_error "No supported adapters found."
     echo -e "\nRun '$0 --list-agents' to see installation status."
     exit 1
 }
@@ -291,12 +288,14 @@ validate_skills() {
     fi
 
     local failed=false
+    local validated_count=0
 
     # Validate each SKILL.md file
     for skill_file in "$TEMP_DIR/skills"/*/SKILL.md; do
         [[ -f "$skill_file" ]] || continue
 
         local skill_name=$(basename "$(dirname "$skill_file")")
+        validated_count=$((validated_count + 1))
 
         echo -e "\nValidating: ${BOLD}$skill_name${NC}"
 
@@ -307,6 +306,11 @@ validate_skills() {
             failed=true
         fi
     done
+
+    if [[ "$validated_count" -eq 0 ]]; then
+        print_error "No generated SKILL.md files found for validation"
+        return 1
+    fi
 
     if $failed; then
         echo ""
@@ -379,7 +383,7 @@ install_skills() {
         print_success "Installed: $skill_name"
     done
 
-    echo "${installed[@]}" > "$TEMP_DIR/installed.txt"
+    printf "%s\n" "${installed[@]}" > "$TEMP_DIR/installed.txt"
 
     if [[ ${#installed[@]} -eq 0 ]]; then
         print_warning "No skills were installed"
@@ -433,14 +437,14 @@ stage_files() {
 
     cd "$PROJECT_ROOT"
 
-    # Stage all new skill files
-    git add skills/*/SKILL.md 2>/dev/null || true
-    git add skills/*/examples/ 2>/dev/null || true
-    git add skills/*/template.md 2>/dev/null || true
+    # Stage only skills installed in this run
+    while IFS= read -r skill_name; do
+        [[ -n "$skill_name" ]] || continue
+        git add "skills/$skill_name" 2>/dev/null || true
+    done < "$TEMP_DIR/installed.txt"
 
     # Stage documentation updates
     git add CLAUDE.md README.md 2>/dev/null || true
-    git add docs/*.md 2>/dev/null || true
 
     print_success "Files staged for commit"
 
@@ -477,6 +481,14 @@ main() {
     # Step 4: Validate
     validate_skills
 
+    # Dry run stops before install/docs/staging
+    if $DRY_RUN; then
+        print_warning "Dry run mode: skipping install, docs updates, and git staging"
+        echo "Generated files are preserved in: $TEMP_DIR/skills"
+        trap - EXIT  # Don't cleanup
+        exit 0
+    fi
+
     # Step 5: Review
     review_skills
 
@@ -492,9 +504,20 @@ main() {
 
 # Parse command line arguments
 parse_args() {
+    require_value() {
+        local option="$1"
+        local value="${2:-}"
+        if [[ -z "$value" || "$value" == -* ]]; then
+            print_error "Option '$option' requires a value"
+            echo "Run '$0 --help' for usage information."
+            exit 1
+        fi
+    }
+
     while [[ $# -gt 0 ]]; do
         case $1 in
             --agent)
+                require_value "--agent" "${2:-}"
                 load_agent "$2"
                 shift 2
                 ;;
@@ -503,6 +526,7 @@ parse_args() {
                 exit 0
                 ;;
             --text)
+                require_value "--text" "${2:-}"
                 INPUT_CONTENT="$2"
                 INPUT_SOURCE="command line argument"
                 shift 2
@@ -518,10 +542,10 @@ Usage: $0 [OPTIONS] [INPUT_FILE]
 Convert raw PM content into formalized skills using AI agents.
 
 Options:
-  --agent <name>      Use specific AI agent (claude-code, codex, goose, gemini)
-  --list-agents       List available AI agents and their installation status
+  --agent <name>      Use specific adapter (claude-code, manual, or custom adapter name)
+  --list-agents       List available adapters and their installation status
   --text "content"    Provide content directly as argument
-  --dry-run           Show what would be done without creating files
+  --dry-run           Generate and validate only (skip install/docs/staging)
   --help, -h          Show this help message
 
 Input Methods:
@@ -532,9 +556,9 @@ Input Methods:
 
 Examples:
   $0 research/new-framework.md
-  $0 --agent codex research/workshop-notes.md
+  $0 --agent manual research/workshop-notes.md
   cat brainstorm.txt | $0
-  pbpaste | $0 --agent goose
+  pbpaste | $0 --agent claude-code
 
 Workflow:
   1. Intake    → Read content from file/stdin/arg
@@ -556,6 +580,10 @@ EOF
                 ;;
             *)
                 # Positional argument (input file)
+                if [[ -n "$INPUT_CONTENT" ]]; then
+                    print_error "Multiple input sources provided. Use only one of: file, --text, or stdin."
+                    exit 1
+                fi
                 read_input "$1"
                 shift
                 ;;

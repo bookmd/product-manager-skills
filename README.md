@@ -13,13 +13,30 @@
 ║   41 battle-tested frameworks for AI agents                        ║
 ║   Claude Code • Cowork • Codex • ChatGPT • Gemini                  ║
 ║                                                                    ║
-║   v0.2 • Feb 2026 • CC BY-NC-SA 4.0                                ║
+║   v0.2 • Feb 8, 2026 • CC BY-NC-SA 4.0                             ║
 ╚════════════════════════════════════════════════════════════════════╝
 ```
 
 **Train AI agents to do product management work like a pro.**
 
 Write PRDs. Run discovery. Plan roadmaps. Prioritize backlogs. Break down epics. All with proven frameworks from Geoffrey Moore, Jeff Patton, Teresa Torres, Amazon, MITRE, and more.
+
+---
+
+## 📣 Updates & Announcements
+
+### Feb 8, 2026 — LinkedIn Launch
+
+**Post title:** Product Management Skills for Your Agents  
+**Subtitle:** Because "just prompt better" is not a strategy.
+
+Still rewriting PM prompts and getting generic AI output? I built a reusable PM Skills repo to help you make sharper decisions, docs, and outcomes faster.
+
+- Full announcement draft: [`docs/announcements/2026-02-08-linkedin-launch.md`](docs/announcements/2026-02-08-linkedin-launch.md)
+- Substack article draft: [`docs/announcements/2026-02-08-substack-savage-launch.md`](docs/announcements/2026-02-08-substack-savage-launch.md)
+- Announcements index: [`docs/announcements/README.md`](docs/announcements/README.md)
+- Skills repo: [Product Manager Skills](https://github.com/deanpeters/Product-Manager-Skills)
+- Prior prompts repo: [Product Manager Prompts](https://github.com/deanpeters/product-manager-prompts)
 
 ---
 
@@ -61,7 +78,12 @@ Some skills include a `scripts/` folder with deterministic helpers for calculati
 
 ## 🤖 Skill Creation Utility
 
-**Want to create your own skills?** Use `scripts/add-a-skill.sh` to automatically convert raw PM content into formalized skills.
+**Want to create your own skills?** Choose one of these utilities:
+
+- `scripts/add-a-skill.sh` - Content-first, AI-assisted generation from notes/frameworks.
+- `scripts/build-a-skill.sh` - Guided "build-a-bear" wizard that prompts section-by-section.
+- `scripts/find-a-skill.sh` - Search skills by name/type/keyword with ranked results.
+- `scripts/test-a-skill.sh` - Run strict conformance checks and optional smoke checks.
 
 **What it does:**
 1. Analyzes your content and suggests skill types
@@ -74,14 +96,23 @@ Some skills include a `scripts/` folder with deterministic helpers for calculati
 # From a file
 ./scripts/add-a-skill.sh research/your-framework.md
 
+# Guided wizard
+./scripts/build-a-skill.sh
+
+# Find a skill
+./scripts/find-a-skill.sh --keyword pricing --type interactive
+
+# Test one skill
+./scripts/test-a-skill.sh --skill finance-based-pricing-advisor --smoke
+
 # From clipboard
 pbpaste | ./scripts/add-a-skill.sh
 
-# Check available AI agents
+# Check available adapters
 ./scripts/add-a-skill.sh --list-agents
 ```
 
-**Agent support:** Claude Code, OpenAI Codex, Goose, Gemini (via adapters)
+**Agent support:** Claude Code, Manual mode (works with any CLI), and custom adapters via `scripts/adapters/ADAPTER_TEMPLATE.sh`
 
 **Learn more:** See [`docs/Add-a-Skill Utility Guide.md`](docs/Add-a-Skill%20Utility%20Guide.md) for complete guide.
 
@@ -109,14 +140,14 @@ These 41 skills are organized into **three types** that build on each other:
 └───────────────────────────────────────────────────────────┘
                          ↓ orchestrates
 ┌───────────────────────────────────────────────────────────┐
-│  INTERACTIVE SKILLS (14)                                  │
+│  INTERACTIVE SKILLS (18)                                  │
 │  Guided discovery with adaptive questions                 │
 │  Example: "Which prioritization framework should I use?"  │
 │  Timeline: 30-90 minutes                                  │
 └───────────────────────────────────────────────────────────┘
                          ↓ uses
 ┌───────────────────────────────────────────────────────────┐
-│  COMPONENT SKILLS (16)                                    │
+│  COMPONENT SKILLS (19)                                    │
 │  Templates for specific PM deliverables                   │
 │  Example: "Write a user story"                            │
 │  Timeline: 10-30 minutes                                  │
@@ -405,7 +436,12 @@ See [LICENSE](LICENSE) for full details.
 
 ---
 
-**v0.1 — February 2026**
+**v0.2 — February 8, 2026**
+
+Highlights in this release:
+- 41 total skills, including Phase 7 finance skills
+- New skill tooling: `add-a-skill`, `build-a-skill`, `find-a-skill`, `test-a-skill`
+- Stricter skill conformance validation and documentation updates
 
 Built by Dean Peters (Principal Consultant and Trainer at Productside.com) with Anthropic Claude and OpenAI Codex.
 

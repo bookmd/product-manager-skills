@@ -14,7 +14,7 @@ The `add-a-skill.sh` utility streamlines skill creation by:
 5. **Updating** project documentation automatically
 6. **Staging** files for git commit
 
-This utility is **agent-agnostic** — it works with Claude Code, OpenAI Codex, Goose, Gemini Antigravity, and other AI CLI tools via adapters.
+This utility is **adapter-driven**. It works out of the box with Claude Code, supports a manual mode (`--agent manual`) that works with any AI CLI, and can be extended via custom adapters.
 
 ---
 
@@ -22,11 +22,10 @@ This utility is **agent-agnostic** — it works with Claude Code, OpenAI Codex, 
 
 ### Prerequisites
 
-1. **Install an AI agent** (one of):
-   - [Claude Code](https://claude.ai/download) (recommended)
-   - [OpenAI Codex CLI](https://github.com/openai/codex-cli)
-   - [Goose](https://github.com/square/goose)
-   - [Gemini Antigravity](https://github.com/google/antigravity)
+1. **Use one of these execution modes:**
+   - [Claude Code](https://claude.ai/download) (recommended, fully integrated)
+   - `--agent manual` (run prompts in any AI CLI, then paste responses)
+   - Custom adapter based on `scripts/adapters/ADAPTER_TEMPLATE.sh`
 
 2. **Ensure Python 3** is installed (for validation)
 
@@ -60,10 +59,8 @@ xclip -o | ./scripts/add-a-skill.sh
 # Use Claude Code (auto-detected by default)
 ./scripts/add-a-skill.sh research/content.md
 
-# Use specific agent
-./scripts/add-a-skill.sh --agent codex research/content.md
-./scripts/add-a-skill.sh --agent goose research/content.md
-./scripts/add-a-skill.sh --agent gemini research/content.md
+# Use manual mode (works with any AI CLI)
+./scripts/add-a-skill.sh --agent manual research/content.md
 ```
 
 ### Check Available Agents
@@ -313,10 +310,10 @@ Next steps:
 ### Options
 
 ```bash
---agent <name>      # Use specific AI agent (claude-code, codex, goose, gemini)
---list-agents       # List available agents and installation status
+--agent <name>      # Use specific adapter (claude-code, manual, or custom)
+--list-agents       # List available adapters and installation status
 --text "content"    # Provide content directly as argument
---dry-run           # Show what would be done (not implemented yet)
+--dry-run           # Generate + validate only; skip install/docs/staging
 --help, -h          # Show help message
 ```
 
@@ -359,13 +356,10 @@ xsel -b | ./scripts/add-a-skill.sh
 ./scripts/add-a-skill.sh docs/my-framework.md
 ```
 
-**With specific agent:**
+**With specific adapter:**
 ```bash
-# Use Codex instead of Claude
-./scripts/add-a-skill.sh --agent codex research/content.md
-
-# Use Goose
-./scripts/add-a-skill.sh --agent goose research/content.md
+# Use manual mode (run prompts in your preferred AI CLI)
+./scripts/add-a-skill.sh --agent manual research/content.md
 ```
 
 **From different sources:**
@@ -383,9 +377,9 @@ pbpaste | ./scripts/add-a-skill.sh
 ./scripts/add-a-skill.sh --text "Framework: Use RICE for prioritization"
 ```
 
-**Check agent status:**
+**Check adapter status:**
 ```bash
-# List all agents and their availability
+# List all adapters and their availability
 ./scripts/add-a-skill.sh --list-agents
 ```
 
@@ -398,17 +392,14 @@ The utility uses an **adapter pattern** to support different AI CLI tools.
 ### Available Adapters
 
 - **claude-code** — Claude Code CLI (default, recommended)
-- **codex** — OpenAI Codex CLI (coming soon)
-- **goose** — Goose CLI (coming soon)
-- **gemini** — Gemini Antigravity CLI (coming soon)
+- **manual** — Terminal copy/paste mode; works with any AI CLI
+- **custom adapters** — Build with `scripts/adapters/ADAPTER_TEMPLATE.sh`
 
 ### Auto-Detection
 
-If no agent is specified, the script tries to detect available agents in priority order:
+If no adapter is specified, the script tries available adapters in priority order:
 1. Claude Code (`claude`)
-2. Codex (`codex`)
-3. Goose (`goose`)
-4. Gemini (`gemini`)
+2. Manual mode (`manual`)
 
 ### Creating New Adapters
 
@@ -529,23 +520,23 @@ A: The script shows what failed (usually name/description too long). You can con
 A: Basic knowledge helps. The script stages files but doesn't commit — you control when to commit.
 
 **Q: Can I use this without Claude Code?**
-A: Yes, if you have another supported AI CLI (Codex, Goose, Gemini). Use `--agent` flag.
+A: Yes. Use `--agent manual`, run prompts in your preferred AI CLI, and paste responses back into the terminal.
 
 ---
 
 ## Troubleshooting
 
-### Agent Not Found
+### Adapter Not Found
 
 **Problem:**
 ```
-✗ Error: No AI agents found
+✗ Error: No supported adapters found.
 ```
 
 **Solution:**
-1. Check agent installation: `./scripts/add-a-skill.sh --list-agents`
-2. Install an agent (Claude Code recommended)
-3. Ensure agent CLI is in your PATH
+1. Check available adapters: `./scripts/add-a-skill.sh --list-agents`
+2. Use manual mode: `./scripts/add-a-skill.sh --agent manual <input-file>`
+3. Install Claude Code or create a custom adapter
 
 ---
 

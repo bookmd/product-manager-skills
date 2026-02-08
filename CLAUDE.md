@@ -8,7 +8,7 @@
 
 ### Current State: v0.2 Released + Multiple Active Phases
 
-**Released: 41 Skills (Feb 2026)**
+**Released: 41 Skills (Feb 8, 2026)**
 - 19 Component Skills (templates/artifacts + finance metrics)
 - 18 Interactive Skills (guided discovery + finance advisors)
 - 4 Workflow Skills (end-to-end processes)
@@ -88,10 +88,21 @@
 **Automation Tools:**
 - **`scripts/add-a-skill.sh`** — Agent-agnostic utility for automated skill creation
   - Converts raw PM content into skills via 8-step workflow
-  - Supports Claude Code, Codex, Goose, Gemini (via adapters)
+  - Supports Claude Code, Manual mode (`--agent manual`), and custom adapters
   - Includes analysis, planning, generation, validation, and documentation steps
   - See `docs/Add-a-Skill Utility Guide.md` for complete guide
   - Use for semi-automated skill creation from research documents or workshop notes
+- **`scripts/build-a-skill.sh`** — Interactive wizard for guided skill construction
+  - Prompts section-by-section (Purpose → References)
+  - Writes deterministic files (`SKILL.md` + optional examples/template)
+  - Validates strict conformance before optional git staging
+- **`scripts/find-a-skill.sh`** — Ranked skill discovery helper
+  - Search by name, type, and keyword
+  - Ranking priority: exact name > frontmatter > section text
+- **`scripts/test-a-skill.sh`** — Skill quality gate
+  - Runs strict conformance checks (`check-skill-metadata.py`)
+  - Verifies linked `skills/*/SKILL.md` references resolve
+  - Optional `--smoke` checks for section/readiness quality
 
 ---
 

@@ -107,27 +107,38 @@ For each skill, create:
 
 Follow the standard skill anatomy from CLAUDE.md.
 
+Return files in this exact format:
+===FILE: <relative/path>
+<file contents>
+===END FILE
+
+Use repository-relative paths like:
+- [skill-name]/SKILL.md
+- [skill-name]/examples/example-name.md
+- [skill-name]/template.md
+
 Plan:
 $plan
 
 Original content:
 $content
-
-**IMPORTANT**: Please use the Write tool to create the skill files directly in this location:
-$output_dir/skills/[skill-name]/SKILL.md
-
-Use the Write tool for each file you need to create. The output directory is: $output_dir
 PROMPT_END
 
     cd "$PROJECT_ROOT" || return 1
 
-    # Call Claude to generate files using Write tool
-    claude --message "Generate skill files using Write tool in $output_dir" < "$TEMP_DIR/generate-prompt.txt" 2>/dev/null
+    # Generate file blocks, then parse into output directory.
+    local response
+    response=$(claude --message "Generate skill files as file blocks" < "$TEMP_DIR/generate-prompt.txt" 2>/dev/null) || {
+        echo "Error: Failed to generate skill files with Claude Code"
+        return 1
+    }
+    echo "$response" > "$TEMP_DIR/generated-files.txt"
+    _parse_and_create_files "$TEMP_DIR/generated-files.txt" "$output_dir"
 
     # Check if files were created
-    if [[ ! -d "$output_dir/skills" ]] && [[ -z "$(find "$output_dir" -name "SKILL.md" 2>/dev/null)" ]]; then
+    if [[ -z "$(find "$output_dir" -name "SKILL.md" 2>/dev/null)" ]]; then
         echo "Warning: No skill files detected. Claude may not have created files yet."
-        echo "Files should be in: $output_dir/skills/"
+        echo "Files should be in: $output_dir/"
         return 1
     fi
 }
@@ -146,6 +157,15 @@ _parse_and_create_files() {
             # Start of new file
             current_file="${BASH_REMATCH[1]}"
             current_file="${current_file## }" # trim leading space
+            current_file="${current_file#./}"
+            if [[ "$current_file" == skills/* ]]; then
+                current_file="${current_file#skills/}"
+            fi
+
+            if [[ "$current_file" == /* ]] || [[ "$current_file" == *".."* ]]; then
+                echo "Error: Refusing unsafe file path: $current_file" >&2
+                return 1
+            fi
             in_file=true
 
             # Create parent directory

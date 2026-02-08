@@ -178,6 +178,14 @@ Mini example excerpt:
 **Pass:** 80%+ correct interpretation
 ```
 
+## Common Pitfalls
+
+- Running a broad "will users like this?" experiment instead of testing one falsifiable hypothesis
+- Treating a PoL probe as a proto-MVP and refusing to dispose of it
+- Using vanity metrics that avoid uncomfortable truth
+- Skipping a pre-defined failure threshold before testing begins
+- Choosing tools first and hypothesis second
+
 ## References
 
 ### Related Skills

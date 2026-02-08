@@ -233,6 +233,49 @@ Use these frameworks to combine metrics for common PM decisions.
 
 ---
 
+## Examples
+
+### Example 1: Feature Investment Sanity Check
+
+You are deciding whether to build a premium export feature.
+
+1. Use Framework 1 (Should We Build This Feature?)
+2. Pull baseline metrics: ARPU, Gross Margin, LTV, Contribution Margin
+3. Model optimistic, base, and downside adoption
+4. Reject if contribution margin turns negative in downside case
+
+Quick output:
+- Base case ROI: 3.8x
+- Contribution margin impact: +4 points
+- Decision: Build now, with a 90-day post-launch check on churn and expansion
+
+### Example 2: Channel Scale Decision
+
+Paid social is generating many signups but weak retention.
+
+1. Use Framework 2 (Should We Scale This Acquisition Channel?)
+2. Check CAC, LTV:CAC, Payback Period, and NRR by channel
+3. Compare against best-performing channel, not company average
+
+Quick output:
+- LTV:CAC: 1.6:1
+- Payback: 26 months
+- NRR: 88%
+- Decision: Do not scale; cap spend and run targeted optimization tests
+
+---
+
+## Common Pitfalls
+
+- Using blended company averages instead of cohort or channel-level metrics
+- Scaling acquisition when Quick Ratio is weak and retention is deteriorating
+- Treating high LTV:CAC as sufficient without checking payback and runway impact
+- Raising prices based on ARPU lift alone without modeling churn and contraction
+- Comparing benchmarks across mismatched company stages or business models
+- Tracking many metrics without a clear decision question
+
+---
+
 ## References
 
 ### Related Skills (Deep Dives)

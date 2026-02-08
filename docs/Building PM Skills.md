@@ -2,7 +2,7 @@
 
 This guide explains how we turn real-world PM frameworks and source materials into agent-ready skills in this repo.
 
-## Two Approaches
+## Three Approaches
 
 **1. Automated (Recommended for most use cases)**
 Use `scripts/add-a-skill.sh` to automatically convert raw PM content into formalized skills. The utility analyzes your content, suggests structure, generates files, validates metadata, and updates documentation.
@@ -13,8 +13,27 @@ Use `scripts/add-a-skill.sh` to automatically convert raw PM content into formal
 
 See [`Add-a-Skill Utility Guide.md`](Add-a-Skill%20Utility%20Guide.md) for complete guide.
 
-**2. Manual (This guide)**
+**2. Guided Wizard (Build-a-Bear style)**
+Use `scripts/build-a-skill.sh` for a multi-turn interactive flow. It prompts for frontmatter and each required section in order, then writes a compliant skill and validates it.
+
+```bash
+./scripts/build-a-skill.sh
+```
+
+**3. Manual (This guide)**
 Follow the steps below to manually create skills when you need full control over structure and content, or when iterating on existing skills.
+
+## Supporting Utilities
+
+Use these to speed up discovery and quality checks:
+
+```bash
+# Find existing skills before creating a new one
+./scripts/find-a-skill.sh --keyword pricing --type interactive
+
+# Test one skill with strict conformance + smoke checks
+./scripts/test-a-skill.sh --skill your-skill-name --smoke
+```
 
 ## What Counts As A Skill
 

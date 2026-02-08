@@ -119,7 +119,7 @@ For faster skill creation, use the `add-a-skill.sh` utility to automatically gen
 # From clipboard
 pbpaste | ./scripts/add-a-skill.sh
 
-# Check available AI agents
+# Check available adapters
 ./scripts/add-a-skill.sh --list-agents
 ```
 
@@ -130,9 +130,23 @@ pbpaste | ./scripts/add-a-skill.sh
 4. Updates documentation automatically
 5. Stages files for git commit
 
-**Supported agents:** Claude Code, OpenAI Codex, Goose, Gemini
+**Supported adapters:** Claude Code, Manual mode (`--agent manual`), and custom adapters
 
 **Learn more:** See [`docs/Add-a-Skill Utility Guide.md`](docs/Add-a-Skill%20Utility%20Guide.md)
+
+**Want a guided wizard instead?**
+```bash
+./scripts/build-a-skill.sh
+```
+
+**Find and test before opening a PR:**
+```bash
+# Find related skills by keyword/type
+./scripts/find-a-skill.sh --keyword discovery --type interactive
+
+# Test your new/updated skill
+./scripts/test-a-skill.sh --skill your-skill-name --smoke
+```
 
 ---
 
