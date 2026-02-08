@@ -28,6 +28,11 @@ No automated tests exist. Validate changes by:
 - Skimming for structure compliance and readability.
 - For Claude web upload, ensure frontmatter is valid YAML and use the packaging helper to generate `Skill.md` copies.
 
+## Operating Principle (Dogfood First)
+- Use this repo's own definitions, scripts, and standards before making structural decisions.
+- If deciding skill type/category, anchor to local criteria in `README.md`, `CLAUDE.md`, and relevant `SKILL.md` files.
+- Prefer proving decisions with repo tools (`scripts/find-a-skill.sh`, `scripts/test-a-skill.sh`, `scripts/check-skill-metadata.py`) over opinion.
+
 ## Claude Custom Skills Compatibility
 - Claude web uploads require `Skill.md` (case-sensitive). Use `scripts/package-claude-skills.sh`.
 - Any scripts under a skill should be deterministic, avoid network calls, and be documented in the skill.

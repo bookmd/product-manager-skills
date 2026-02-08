@@ -77,6 +77,9 @@
 
 **Important Notes for Claude:**
 - Always check `git status` and recent commits before starting new work
+- Dogfood first: use this repo's own standards/scripts/skill definitions as the source of truth before making recommendations
+- For category decisions (Component vs Interactive vs Workflow), anchor to criteria in this file and `README.md` before giving an answer
+- Prefer evidence from local tools (`scripts/find-a-skill.sh`, `scripts/test-a-skill.sh`, `scripts/check-skill-metadata.py`) over subjective preference
 - Skills must follow standard anatomy: Purpose, Key Concepts, Application, Examples, Common Pitfalls, References
 - Interactive skills require 3-5 adaptive questions, enumerated options (3-5 choices), handle single/multi-selection
 - All skills include YAML frontmatter: `name`, `description`, `type`
