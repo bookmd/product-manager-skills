@@ -4,9 +4,9 @@
 
 ---
 
-## Project Status (Last updated: Sun Feb 9 2026)
+## Project Status (Last updated: Tue Feb 10 2026)
 
-### Current State: v0.3 Released + Multiple Active Phases
+### Current State: v0.4 Released + Multiple Active Phases
 
 **Released: 42 Skills (Feb 9, 2026)**
 - 19 Component Skills (templates/artifacts + finance metrics)
@@ -35,6 +35,11 @@
   - See `docs/Finance Suite Summary.md` for complete overview
 
 **Recent Updates:**
+- ✅ **v0.4 Released (Feb 10, 2026):** Fixed facilitation protocol regression and standardized guided interaction behavior
+  - Root cause: brevity-focused rewriting could strip facilitation modality details from interactive flows
+  - Resolution: established `skills/workshop-facilitation/SKILL.md` as source of truth and linked it across interactive and facilitation-heavy workflow skills
+  - Added heads-up start, context-dump bypass, best-guess mode, progress labels, and interruption handling
+  - Implemented by Codex after diagnosing expected-vs-actual facilitation mismatch
 - ✅ **Phase 7 Complete:** 7 finance skills released (Feb 8, 2026)
 - All skills alphabetically ordered within each category (Component, Interactive, Workflow)
 - Enhanced documentation in `/docs`:

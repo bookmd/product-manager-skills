@@ -1,8 +1,21 @@
 # Product Manager Skills — Development Roadmap
 
-**Last Updated:** 2026-02-09
+**Last Updated:** 2026-02-10
 **Status:** Phase 1 COMPLETE ✅ | Phase 2 COMPLETE ✅ | Phase 3 COMPLETE ✅ | Phase 4 COMPLETE ✅ | Phase 5 COMPLETE ✅ | Phase 6 COMPLETE ✅ | Phase 7 COMPLETE ✅ | Phase 8 IN PROGRESS 🚧
-**Version:** v0.3 (Released February 9, 2026)
+**Version:** v0.4 (Released February 10, 2026)
+
+---
+
+## 🎉 v0.4 Release
+
+Current state: 42 skills with standardized facilitation behavior across interactive and guided workflow usage.
+
+**v0.4 updates:**
+- Fixed a facilitation regression where brevity-focused rewrites could remove expected one-question-at-a-time walkthrough behavior
+- Established `skills/workshop-facilitation/SKILL.md` as the facilitation source of truth
+- Added protocol features: opening heads-up, context-dump bypass mode, best-guess mode, progress labels, and interruption handling
+- Linked facilitation source-of-truth guidance across all interactive skills and facilitation-heavy workflow skills
+- Codex diagnosed and implemented the cross-repo protocol fix
 
 ---
 

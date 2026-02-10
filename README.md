@@ -14,7 +14,7 @@
 ║   42 battle-tested frameworks for AI agents                        ║
 ║   Claude Code • Cowork • Codex • ChatGPT • Gemini                  ║
 ║                                                                    ║
-║   v0.3 • Feb 9, 2026 • CC BY-NC-SA 4.0                             ║
+║   v0.4 • Feb 10, 2026 • CC BY-NC-SA 4.0                            ║
 ╚════════════════════════════════════════════════════════════════════╝
 ```
 
@@ -25,6 +25,27 @@ Frame problems, hunt opportunities, scaffold validation experiments, and kill ba
 ---
 
 ## 📣 Updates & Announcements
+
+### Feb 10, 2026 — v0.4 Facilitation Protocol Fix
+
+We found and fixed a facilitation regression in interactive flows.
+
+What happened:
+- We expected guided, step-by-step facilitation with progressive context handling.
+- In practice, a brevity-focused rewrite path stripped out parts of the original facilitation modality (especially the "walk through questions" behavior).
+
+What we changed in v0.4:
+- Standardized a canonical facilitation protocol in [`skills/workshop-facilitation/SKILL.md`](skills/workshop-facilitation/SKILL.md).
+- Rolled that source-of-truth linkage across interactive skills and facilitation-heavy workflow skills.
+- Added mandatory session heads-up, `Context dump` bypass, and `Best guess` mode.
+- Added stronger progress labels, interruption handling, and decision-point recommendation rules.
+
+Credit:
+- Codex identified the protocol mismatch and implemented the fix across the repo.
+
+Announcement draft: [`docs/announcements/2026-02-10-v0-4-facilitation-fix.md`](docs/announcements/2026-02-10-v0-4-facilitation-fix.md)
+
+---
 
 ### Feb 8, 2026 — LinkedIn Launch
 
@@ -482,6 +503,14 @@ See [LICENSE](LICENSE) for full details.
 - **Productside:** [Learn more about AI PM consulting](https://productside.com)
 
 ---
+
+**v0.4 — February 10, 2026**
+
+Highlights in this release:
+- Fixed a facilitation protocol regression where brevity-focused rewrites could remove expected guided-question behavior
+- Promoted `workshop-facilitation` to canonical source of truth for interactive facilitation
+- Added consistent opening heads-up, context-dump bypass path, and best-guess mode
+- Applied protocol linkage across interactive skills and facilitation-heavy workflow skills
 
 **v0.3 — February 9, 2026**
 
