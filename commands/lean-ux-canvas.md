@@ -1,0 +1,6 @@
+---
+description: Guide product managers through Jeff Gothelf's Lean UX Canvas v2—a one-page tool that frames work around a business problem, exposes assumptions, and ensures learning every sprint.
+disable-model-invocation: true
+---
+
+Invoke the pm:lean-ux-canvas skill and follow it exactly as presented to you.
