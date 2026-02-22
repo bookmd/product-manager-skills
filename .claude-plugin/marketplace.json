@@ -1,0 +1,16 @@
+{
+  "name": "pm-skills",
+  "description": "Product management skills — 42 skills covering components, interactive flows, and workflows",
+  "owner": {
+    "name": "Dean"
+  },
+  "plugins": [
+    {
+      "name": "pm",
+      "description": "Product management skills for discovery, strategy, finance, and delivery",
+      "version": "0.4.0",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
