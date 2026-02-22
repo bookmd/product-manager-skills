@@ -4,13 +4,13 @@
 
 ---
 
-## Project Status (Last updated: Tue Feb 10 2026)
+## Project Status (Last updated: Sun Feb 22 2026)
 
 ### Current State: v0.4 Released + Multiple Active Phases
 
-**Released: 42 Skills (Feb 9, 2026)**
+**Released: 43 Skills (Feb 22, 2026)**
 - 19 Component Skills (templates/artifacts + finance metrics)
-- 18 Interactive Skills (guided discovery + finance advisors)
+- 19 Interactive Skills (guided discovery + finance advisors + user flow design)
 - 5 Workflow Skills (end-to-end processes + meta skill-authoring workflow)
 - License: CC BY-NC-SA 4.0
 - All skills restructured to Anthropic-compliant format (`skills/skill-name/SKILL.md`)
@@ -35,6 +35,10 @@
   - See `docs/Finance Suite Summary.md` for complete overview
 
 **Recent Updates:**
+- ✅ **Skill #43: user-flow-design** (Interactive) — Added Feb 22, 2026
+  - Guides PMs from problem statement to agent-buildable screen specs with ASCII wireframes
+  - 5-phase guided flow: Problem Framing → User Segmentation → Flow Architecture → Screen Specification → Handoff
+  - Standalone addition (not part of Phase 6 or 7)
 - ✅ **v0.4 Released (Feb 10, 2026):** Fixed facilitation protocol regression and standardized guided interaction behavior
   - Root cause: brevity-focused rewriting could strip facilitation modality details from interactive flows
   - Resolution: established `skills/workshop-facilitation/SKILL.md` as source of truth and linked it across interactive and facilitation-heavy workflow skills

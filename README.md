@@ -11,7 +11,7 @@
 ║   ██║     ██║ ╚═╝ ██║    ███████║██║  ██╗██║███████╗███████╗███████║
 ║   ╚═╝     ╚═╝     ╚═╝    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝
 ║                                                                    ║
-║   42 battle-tested frameworks for AI agents                        ║
+║   43 battle-tested frameworks for AI agents                        ║
 ║   Claude Code • Cowork • Codex • ChatGPT • Gemini                  ║
 ║                                                                    ║
 ║   v0.4 • Feb 10, 2026 • CC BY-NC-SA 4.0                            ║
@@ -64,7 +64,7 @@ Still rewriting PM prompts and getting generic AI output? I built a reusable PM 
 
 ## 🎯 What This Is
 
-**42 ready-to-use PM frameworks** that teach AI agents how to do product management work professionally—without you having to explain your process every time.
+**43 ready-to-use PM frameworks** that teach AI agents how to do product management work professionally—without you having to explain your process every time.
 
 Instead of saying *"Write a PRD"* and hoping for the best, the agent already knows:
 - ✅ How to structure a PRD
@@ -170,7 +170,7 @@ pbpaste | ./scripts/add-a-skill.sh
 
 ## 🏗️ Three-Tier Architecture (How Skills Work Together)
 
-These 42 skills are organized into **three types** that build on each other:
+These 43 skills are organized into **three types** that build on each other:
 
 ```text
 ┌───────────────────────────────────────────────────────────┐
@@ -181,7 +181,7 @@ These 42 skills are organized into **three types** that build on each other:
 └───────────────────────────────────────────────────────────┘
                          ↓ orchestrates
 ┌───────────────────────────────────────────────────────────┐
-│  INTERACTIVE SKILLS (18)                                  │
+│  INTERACTIVE SKILLS (19)                                  │
 │  Guided discovery with adaptive questions                 │
 │  Example: "Which prioritization framework should I use?"  │
 │  Timeline: 30-90 minutes                                  │
@@ -204,7 +204,7 @@ These 42 skills are organized into **three types** that build on each other:
 
 ---
 
-### Interactive Skills (18) — Guided Discovery
+### Interactive Skills (19) — Guided Discovery
 **What:** Multi-turn conversational flows where AI asks you 3-5 adaptive questions, then offers smart recommendations based on your context.
 
 **When to use:** You need help deciding which approach to take or gathering context before executing.
@@ -229,7 +229,7 @@ These 42 skills are organized into **three types** that build on each other:
 
 ---
 
-## 📦 All 42 Skills (Clickable)
+## 📦 All 43 Skills (Clickable)
 
 Now that you understand the three types, here's the complete catalog:
 
@@ -259,7 +259,7 @@ Now that you understand the three types, here's the complete catalog:
 
 ---
 
-### 🔄 Interactive Skills (18)
+### 🔄 Interactive Skills (19)
 
 | Skill | What It Does |
 |-------|--------------|
@@ -280,6 +280,7 @@ Now that you understand the three types, here's the complete catalog:
 | **[prioritization-advisor](skills/prioritization-advisor/SKILL.md)** | Recommends the right prioritization framework (RICE, ICE, Kano, etc.) for your situation |
 | **[problem-framing-canvas](skills/problem-framing-canvas/SKILL.md)** | Leads you through MITRE Problem Framing (Look Inward/Outward/Reframe) |
 | **[tam-sam-som-calculator](skills/tam-sam-som-calculator/SKILL.md)** | Projects market size (TAM/SAM/SOM) with real-world data and citations |
+| **[user-flow-design](skills/user-flow-design/SKILL.md)** | Guides you from a problem statement to agent-buildable screen specs with ASCII wireframes, screen registry, and scenario flows |
 | **[user-story-mapping-workshop](skills/user-story-mapping-workshop/SKILL.md)** | Walks you through creating story maps with backbone and release slices |
 | **[workshop-facilitation](skills/workshop-facilitation/SKILL.md)** | Adds one-step-at-a-time facilitation with numbered recommendations for workshop skills |
 
@@ -515,7 +516,7 @@ Highlights in this release:
 **v0.3 — February 9, 2026**
 
 Highlights in this release:
-- 42 total skills, including Phase 7 finance skills and the new `skill-authoring-workflow`
+- 43 total skills, including Phase 7 finance skills and the new `skill-authoring-workflow`
 - New skill tooling: `add-a-skill`, `build-a-skill`, `find-a-skill`, `test-a-skill`, `zip-a-skill`
 - New onboarding docs for Claude, Codex, ChatGPT, and non-technical "rule-of-thumb" setup
 
